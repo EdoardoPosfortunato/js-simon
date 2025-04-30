@@ -5,6 +5,7 @@ const formName = document.getElementById("numeriInseriti");
 // Prelevo elementi da compilare //
 
 let numeriRandomList = document.querySelector(".numeriDaRicordare ul");
+let numeriLista = document.querySelector(".numeriDaRicordare ul li");
 let numeriDaInserire = document.getElementById("numeriDaInserire")
 let numeriIndovinati = document.getElementById("numeriIndovinati")
 
@@ -45,14 +46,14 @@ let liElement = numeriRandomList.getElementsByTagName("li")
 
 // funzione - sparizione dei numeri - e sostituirli con tipiacerebbe in HTML
 
-setTimeout(sparire, 300000);
+setTimeout(sparire, 3000);
 
 function sparire() {
     numeriRandomList.style = "display: none;";
 
-    for (let i = 0; i < liElement.length; i++) {
-        liElement[i].textContent = "ti piacerebbe"
-    }
+    // for (let i = 0; i < liElement.length; i++) {
+    //     liElement[i].textContent = "ti piacerebbe"
+    // }
 
     numeriDaInserire.style = "display: block"
 
@@ -136,7 +137,8 @@ function submitForm(event) {
     numeriIndovinati.appendChild(risultato);
 
 
-
+    numeriRandomList.style.display = "block";
+    
 
 
 }
