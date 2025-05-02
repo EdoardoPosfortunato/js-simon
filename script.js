@@ -5,9 +5,12 @@ const formName = document.getElementById("numeriInseriti");
 // Prelevo elementi da compilare //
 
 let numeriRandomList = document.querySelector(".numeriDaRicordare ul");
+let numeriDaRicordare = document.querySelector(".numeriDaRicordare");
+let numeriDaRicordareTitolo = document.querySelector(".numeriDaRicordare h2");
 let numeriLista = document.querySelector(".numeriDaRicordare ul li");
 let numeriDaInserire = document.getElementById("numeriDaInserire")
 let numeriIndovinati = document.getElementById("numeriIndovinati")
+let risultato = document.getElementById("risultato")
 
 
 // Prelevo gli oggetti per INPUT del DOM
@@ -34,7 +37,7 @@ for (let i = 0; i < 5; i++) {
     // creo la lista di numeri random in HTML
     const li = document.createElement("li");
     li.textContent = numero;
-    li.classList = "listElement"
+    li.classList = "col form-control mx-3"
     numeriRandomList.appendChild(li);
 
     // creati i numeri ////
@@ -49,11 +52,9 @@ let liElement = numeriRandomList.getElementsByTagName("li")
 setTimeout(sparire, 3000);
 
 function sparire() {
-    numeriRandomList.style = "display: none;";
-
-    // for (let i = 0; i < liElement.length; i++) {
-    //     liElement[i].textContent = "ti piacerebbe"
-    // }
+    numeriDaRicordare.style = "display: none;";
+    numeriRandomList.innerHTML = ""
+    
 
     numeriDaInserire.style = "display: block"
 
@@ -62,20 +63,11 @@ function sparire() {
 
 // funzione - sparizione dei numeri - e sostituirli con tipiacerebbe in HTML
 
-/* setTimeout(sparire, 3000);
 
-function sparire() {
-    numeriRandomList.style = "display: none;";
-
-    for (let i = 0; i < liElement.length; i++) {
-        liElement[i].textContent = "ti piacerebbe"
-    }
-
-    numeriDaInserire.style = "display: block"
-
-} */
 
 let arrayNumInseriti = [];
+const btn = document.getElementById("confermBtn");
+const btn2 = document.getElementById("reloadBtn");
 
 
 formName.addEventListener("submit", submitForm)
@@ -83,7 +75,7 @@ formName.addEventListener("submit", submitForm)
 function submitForm(event) {
 
     event.preventDefault(); // ferma il ricaricamento della pagina
-
+    // btn.disabled = true;
     // prelevo gli input
 
 
@@ -103,7 +95,7 @@ function submitForm(event) {
 
     let cont = 0;
     let arrayUguale = []
-
+    
 
     for (let i = 0; i < arrayNumInseriti.length; i++) {
 
@@ -132,13 +124,32 @@ function submitForm(event) {
 
 
 
-    const risultato = document.createElement("p");
+    
     risultato.textContent = `Hai indovinato ${cont} numeri e sono ${arrayUguale}`;
-    numeriIndovinati.appendChild(risultato);
-
-
-    numeriRandomList.style.display = "block";
     
 
 
+    numeriDaRicordare.style.display = "block";
+    numeriDaRicordareTitolo.textContent = "I Numeri Erano"
+    
+
+
+    for (let i = 0; i < 5; i++) {
+
+        // creo la lista di numeri random in HTML
+        const li = document.createElement("li");
+        li.textContent = randomArray[i];
+        li.classList = "col form-control mx-3"
+        numeriRandomList.appendChild(li);
+    
+
+    }
+
+    btn.style = "display:none"
+    btn2.style = "display:block"
+    btn2.textContent = "Try again ...";
+    btn2.addEventListener("click", function() {
+      location.reload();
+
+})
 }
