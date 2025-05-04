@@ -13,50 +13,64 @@
 
 <body>
     <main>
-        <div class="numeriDaRicordare container text-center my-4">
-            <h2>Ricorda questi numeri</h2>
-            <div>
-                <ul class="row g-5 my-1">
+        <div class="row justify-content-center align-items-center min-vh-100">
 
-                </ul>
+            <div id="preliminary" class="container text-center my-3">
+                <h2>Sei pronto ??</h2>
+                <p id="instruction" class="fst-italic"> Hai 30 secondi per indovianri i numeri che appariranno</p>
+                <button id="startBtn" class="btn btn-primary my-3">Premi per iniziare</button>
+                <p id="countDownStart" class="my-4 fs-2"></p>
+            </div>
+            <div class="numeriDaRicordare container text-center my-4" style="display: none;">
+            <!-- <div class="numeriDaRicordare row container text-center my-4"> -->
+                <h2 class="col-12">Ricorda questi numeri</h2>
+                <div>
+                    <ul class="row g-5 my-1">
+                        <!-- <li class="col form-control mx-3">20</li>
+                        <li class="col form-control mx-3">25</li>
+                        <li class="col form-control mx-3">58</li>
+                        <li class="col form-control mx-3">44</li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="container text-center my-4" id="numeriDaInserire" style="display: none;">
+            <!-- <div class="container text-center my-4" id="numeriDaInserire"> -->
+                <h2>Inserisci i numeri che ricordi</h2>
+                <form id="numeriInseriti">
+                    <div class="row g-5 my-1">
+                        <div class="col">
+                            <input type="number" id="num1" class="form-control" placeholder="..." />
+                        </div>
+                        <div class="col">
+                            <input type="number" id="num2" class="form-control" placeholder="..." />
+                        </div>
+                        <div class="col">
+                            <input type="number" id="num3" class="form-control" placeholder="..." />
+                        </div>
+                        <div class="col">
+                            <input type="number" id="num4" class="form-control" placeholder="..." />
+                        </div>
+                        <div class="col">
+                            <input type="number" id="num5" class="form-control" placeholder="..." />
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <button type="submit" id="confermBtn" class="btn btn-primary">Conferma</button>
+                    </div>
+                </form>
+            </div>
+            <div id="numeriIndovinati">
+                <div class="my-4 row justify-content-center">
+                    <h2 id="risultato" class="col-12 text-center"></h2>
+                    <button type="submit" id="reloadBtn" class="btn btn-primary col-2 my-2" style="display: none;">Try
+                        again
+                        ...</button>
+                    <!-- <button type="submit" id="reloadBtn" class="btn btn-primary col-2 my-4">Try again
+                                ...</button> -->
+                </div>
             </div>
 
         </div>
-        <div class="container text-center my-4" id="numeriDaInserire" style="display: none;">
-            <h2>Inserisci i numeri che ricordi</h2>
-            <form id="numeriInseriti">
-                <div class="row g-5 my-1">
-                    <div class="col">
-                        <input type="number" id="num1" class="form-control" placeholder="..." />
-                    </div>
-                    <div class="col">
-                        <input type="number" id="num2" class="form-control" placeholder="..." />
-                    </div>
-                    <div class="col">
-                        <input type="number" id="num3" class="form-control" placeholder="..." />
-                    </div>
-                    <div class="col">
-                        <input type="number" id="num4" class="form-control" placeholder="..." />
-                    </div>
-                    <div class="col">
-                        <input type="number" id="num5" class="form-control" placeholder="..." />
-                    </div>
-                </div>
-                <div class="my-4">
-                    <button type="submit" id="confermBtn" class="btn btn-primary">Conferma</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div id="numeriIndovinati">
-            <div class="my-4 row justify-content-center">
-                <h2 id="risultato" class="col-12 text-center"></h2>
-                <button type="submit" id="reloadBtn" class="btn btn-primary col-2 my-2" style="display: none;">Try again
-                    ...</button>
-            </div>
-        </div>
-
 
     </main>
 

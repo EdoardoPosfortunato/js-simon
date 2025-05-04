@@ -4,6 +4,9 @@ const formName = document.getElementById("numeriInseriti");
 
 // Prelevo elementi da compilare //
 
+const buttonStart = document.getElementById("startBtn");
+const countdownStart = document.getElementById("countDownStart");
+const prelDivision = document.getElementById("preliminary");
 let numeriRandomList = document.querySelector(".numeriDaRicordare ul");
 let numeriDaRicordare = document.querySelector(".numeriDaRicordare");
 let numeriDaRicordareTitolo = document.querySelector(".numeriDaRicordare h2");
@@ -23,6 +26,38 @@ const numInput5 = document.getElementById("num5");
 
 
 
+
+let countDownNumber = 6;
+let countdownValid = true;
+let countdownInterval = null;
+
+buttonStart.addEventListener("click", startCountdown);
+
+function startCountdown() {
+    if (countDownNumber => 0 && countdownValid === true && countdownInterval === null) {
+        countdownInterval = setInterval(() => {
+            countDownNumber--;
+            countdownStart.innerText = countDownNumber;
+            buttonStart.style.display = "none";
+
+            if (countDownNumber < 0) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                countdownValid = false;
+                prelDivision.style.display = "none";
+                numeriDaRicordare.style.display = "block"
+            }
+        }, 1000);
+    }
+}
+
+// Funzione che fa iniziare i gioco // 
+// Aggiungere al contDown della funzione Sparire 6 secondi del contDownStart //
+
+
+buttonStart.addEventListener("click", startGame);
+
+function startGame() {
 let numeriRandom = [];
 
 
@@ -49,12 +84,12 @@ let liElement = numeriRandomList.getElementsByTagName("li")
 
 // funzione - sparizione dei numeri - e sostituirli con tipiacerebbe in HTML
 
-setTimeout(sparire, 3000);
+setTimeout(sparire, 10000); // aggiungere 6 secondi del contodwn inizale
 
 function sparire() {
     numeriDaRicordare.style = "display: none;";
     numeriRandomList.innerHTML = ""
-    
+
 
     numeriDaInserire.style = "display: block"
 
@@ -95,7 +130,7 @@ function submitForm(event) {
 
     let cont = 0;
     let arrayUguale = []
-    
+
 
     for (let i = 0; i < arrayNumInseriti.length; i++) {
 
@@ -124,14 +159,14 @@ function submitForm(event) {
 
 
 
-    
+
     risultato.textContent = `Hai indovinato ${cont} numeri e sono ${arrayUguale}`;
-    
+
 
 
     numeriDaRicordare.style.display = "block";
     numeriDaRicordareTitolo.textContent = "I Numeri Erano"
-    
+
 
 
     for (let i = 0; i < 5; i++) {
@@ -141,15 +176,17 @@ function submitForm(event) {
         li.textContent = randomArray[i];
         li.classList = "col form-control mx-3"
         numeriRandomList.appendChild(li);
-    
+
 
     }
 
     btn.style = "display:none"
     btn2.style = "display:block"
     btn2.textContent = "Try again ...";
-    btn2.addEventListener("click", function() {
-      location.reload();
+    btn2.addEventListener("click", function () {
+        location.reload();
 
-})
+    })
+}
+
 }
